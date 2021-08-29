@@ -1,23 +1,20 @@
 module Api
   module V1
     class CoursesController < ApplicationController
-     
       def index
-           courses = Course.order('created_at DESC');
-           render json: {status: 'SUCCESS',message: 'Courses Found', data:courses}, status: :ok
-      end
-      
-      def new
-
-      end
-
-      def create
-
+        courses = Course.order('created_at DESC');
+        render json: { status: 'SUCCESS', message: 'Courses Found', data: courses }, status: :ok
       end
 
       def show
-        course = Course.find(params[:id])
-        render json: {status: 'Success',message: 'Course found', data:course}, status: :ok
+        course = Course.find(newparams[:id])
+        render json: { status: 'Success', message: 'Course found', data: course }, status: :ok
+      end
+
+      private
+
+      def newparams
+        params.permit(:id)
       end
     end
   end
