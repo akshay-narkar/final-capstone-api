@@ -4,8 +4,8 @@ FactoryBot.define do
     domain { Faker::Superhero.descriptor }
     teacher_name { Faker::Superhero.name }
     rating { 5 }
-    fee {
+    fee do
       25
-    }
+    end
   end
 end

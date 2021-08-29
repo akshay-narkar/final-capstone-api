@@ -11,5 +11,4 @@ RSpec.describe Course, type: :model do
   it { should validate_presence_of(:fee) }
   it { should validate_presence_of(:rating) }
   it { should validate_numericality_of(:rating).is_less_than(6).is_greater_than(-1) }
-
 end

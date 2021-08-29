@@ -17,7 +17,7 @@ RSpec.describe Fav, type: :model do
     it { should validate_presence_of(:course_id) }
     it { should validate_numericality_of(:user_id).only_integer }
     it { should validate_numericality_of(:course_id).only_integer }
-    it { should validate_uniqueness_of(:user_id).scoped_to(:course_id).with_message("Course already liked!") }
+    it { should validate_uniqueness_of(:user_id).scoped_to(:course_id).with_message('Course already liked!') }
   end
   context 'Relations' do
     it 'User likes a course' do
