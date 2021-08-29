@@ -20,20 +20,14 @@ module Api
       end
 
       def destroy
-        favs = current_user.favs.where(course_id: newparams[:course_id]);
+        favs = current_user.favs.where(course_id: newparams[:course_id])
         # delete = Fav.where(user_id: current_user.id,course_id: newparams[:id])
-        if delete.destroy
+        if favs.destroy
           render json: { status: 'SUCCESS', message: 'Removed from favorites', data: delete }, status: :ok
         else
           render json: { status: 'Failure', message: 'Could not remove from favorites', data: delete.errors }, status: :fail
         end
       end
-
-      # def show
-      #      delete = newparams
-      #      render json: {status: 'SUCCESS',message: 'Removed from favorites', data:delete}, status: :ok
-
-      # end
 
       private
 
