@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  private
+  protected
 
-  def item_params
-    params.permit(:email, :password, :password_confirmation)
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email password password_confirmation name])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password session])
   end
 end
