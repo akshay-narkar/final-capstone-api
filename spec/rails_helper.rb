@@ -35,7 +35,10 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
+  Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
