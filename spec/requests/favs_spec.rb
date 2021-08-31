@@ -2,14 +2,15 @@ require 'rails_helper'
 
 RSpec.describe 'Favs', type: :request do
   # initialize test data
+  let!(:users) { create(:user) }
+  let(:user_id) { users.id }
+  let!(:courses) { create(:course) }
+  let(:course_id) { courses.id }
+  let(:valid_attributes) { { course_id: course_id } }
 
   # Test suite for GET /courses
   describe 'GET /favs' do
     # make HTTP get request before each example
-    let!(:users) { create(:user) }
-    let(:user_id) { users.id }
-    let!(:courses) { create(:course) }
-    let(:course_id) { courses.id }
 
     before { login1 }
 
@@ -18,23 +19,18 @@ RSpec.describe 'Favs', type: :request do
       get "/api/v1/users/#{user_id}/favs", headers: auth_params
       expect(json['message']).to eq('Courses Found')
       expect(json['message']).not_to eq('Courses Not Found')
+    end
+    it 'returns status code 200' do
       expect(response.status).to eq(200)
       expect(response.status).not_to eq(404)
     end
   end
 
   describe 'Post /favs' do
-    let!(:users) { create(:user) }
-    let(:user_id) { users.id }
-    let!(:courses) { create(:course) }
-    let(:course_id) { courses.id }
-
-    let(:valid_attributes) { { course_id: course_id } }
     before { login1 }
 
     it 'returns favorite courses' do
       # Note `json` is a custom helper to parse JSON responses
-      # json1 = json(response.body)
       auth_params = get_auth_params_from_login_response_headers(response)
       post "/api/v1/users/#{user_id}/favs", params: valid_attributes, headers: auth_params
       expect(json['message']).to eq('Added to favorites')
@@ -47,12 +43,6 @@ RSpec.describe 'Favs', type: :request do
   end
 
   describe 'Delete /favs' do
-    let!(:users) { create(:user) }
-    let(:user_id) { users.id }
-    let!(:courses) { create(:course) }
-    let(:course_id) { courses.id }
-    let(:valid_attributes) { { course_id: course_id } }
-
     before { login1 }
 
     it 'returns favorite courses' do
