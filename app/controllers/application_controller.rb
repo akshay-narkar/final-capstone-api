@@ -6,6 +6,6 @@ class ApplicationController < ActionController::API
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[email password password_confirmation name])
-    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password session])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
   end
 end
