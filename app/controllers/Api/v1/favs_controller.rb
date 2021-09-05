@@ -15,7 +15,7 @@ module Api
         if fav.save
           render json: { status: 'SUCCESS', message: 'Added to favorites', data: fav }, status: :ok
         else
-          render json: { status: 'Failure', message: 'Could not add to favorites', data: fav.errors }, status: status
+          render json: { status: 'Failure', message: 'Could not add to favorites', data: fav.errors }, status: :unprocessable_entity
         end
       end
 
@@ -25,10 +25,10 @@ module Api
           if delete1.destroy
             render json: { status: 'SUCCESS', message: 'Removed from favorites', data: delete1 }, status: :ok
           else
-            render json: { status: 'Failure', message: 'Could not remove from favorites', data: delete1.errors }, status: status
+            render json: { status: 'Failure', message: 'Could not remove from favorites', data: delete1.errors }, status: :unprocessable_entity
           end
         else
-          render json: { status: 'Failure', message: 'No data found', data: delete1 }, status: status
+          render json: { status: 'Failure', message: 'No data found', data: delete1 }, status: :unprocessable_entity
         end
       end
 
