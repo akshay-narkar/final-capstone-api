@@ -22,7 +22,7 @@ Check the API documentation file for details on the endpoints.
 
 ## Live Demo
 
-[Live Demo Link](https://find-your-houses.herokuapp.com)
+[Live Demo Link](https://courses-api-microverse.herokuapp.com)
 
 ## Getting Started
 
@@ -60,6 +60,7 @@ To get a local copy up and running follow these simple example steps.
   ```
      rails db:create
      rails db:migrate
+     rails db:seed
   ```
 
 ### Usage
@@ -137,4 +138,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](LICENSE.md) licensed.
