@@ -6,9 +6,9 @@
 
 This is an API made in Rails to serve endpoints for any front end app where a user can browse through the a catalogue and favorite what he likes.
 
-## API Documentation
+<!-- ## API Documentation
 
-Check the API documentation file for details on the endpoints.
+Check the API documentation file for details on the endpoints. -->
 
 ## ERD
 
