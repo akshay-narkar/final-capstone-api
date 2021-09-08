@@ -2,7 +2,7 @@ module Api
   module V1
     class CoursesController < ApplicationController
       def index
-        courses = Course.order('created_at DESC')
+        courses = Course.all
         render json: { status: 'SUCCESS', message: 'Courses Found', data: courses }, status: :ok
       end
 
