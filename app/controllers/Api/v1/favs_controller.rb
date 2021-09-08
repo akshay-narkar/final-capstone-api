@@ -5,12 +5,10 @@ module Api
 
       def index
         favs = current_api_v1_user.courses
-        # favs = User.find_by_id(newparams[:user_id]).courses
         render json: { status: 'SUCCESS', message: 'Courses Found', data: favs }, status: :ok
       end
 
       def create
-        # fav = Fav.create(user_id: newparams[:user_id], course_id: courseparams[:course_id])
         fav = current_api_v1_user.favs.build(courseparams)
         if fav.save
           render json: { status: 'SUCCESS', message: 'Added to favorites', data: fav }, status: :ok
@@ -20,7 +18,7 @@ module Api
       end
 
       def destroy
-        delete1 = current_api_v1_user.favs.find_by(course_id: params[:course_id])
+        delete1 = Fav.find_by(course_id: params[:course_id], user_id: params[:user_id])
         if delete1
           if delete1.destroy
             render json: { status: 'SUCCESS', message: 'Removed from favorites', data: delete1 }, status: :ok
