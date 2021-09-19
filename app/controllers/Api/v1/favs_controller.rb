@@ -8,6 +8,11 @@ module Api
         render json: { status: 'SUCCESS', message: 'Courses Found', data: favs }, status: :ok
       end
 
+      def new
+        favs = current_api_v1_user.favs
+        render json: { status: 'SUCCESS', message: 'Courses Found', data: favs }, status: :ok
+      end
+
       def create
         fav = current_api_v1_user.favs.build(courseparams)
         if fav.save
