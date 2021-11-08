@@ -4,7 +4,7 @@
 
 ## Project Specification
 
-This is an API made in Rails to serve endpoints for any front end app where a user can browse through the a catalogue and favorite what he likes.
+This is an API made in Rails to serve endpoints for Find-Your-Course frontend where a user can browse through the a catalogue and favorite the courses he likes.
 
 <!-- ## API Documentation
 
